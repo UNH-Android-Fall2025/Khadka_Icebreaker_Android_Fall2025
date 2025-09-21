@@ -2,5 +2,7 @@
     <string name="app_name">Khadka_Icebreaker_Android_Fall2025</string>
     <string name="header_text">Icebreaker For Android</string>
     <string name="header_sub_text">Made by Ashish Khadka</string>
-    <string name="first_name_text">firstName</string>
+    <string name="first_name_text">First Name</string>
+    <string name="last_name_text">Last Name</string>
+    <string name="pref_name_text">Pref Name</string>
 </resources>
