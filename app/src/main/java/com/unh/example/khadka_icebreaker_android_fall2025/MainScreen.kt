@@ -1,6 +1,5 @@
 package com.unh.example.khadka_icebreaker_android_fall2025
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,7 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun MainScreen(modifier: Modifier=Modifier) {
+fun MainScreen(modifier: Modifier=Modifier,
+               onGetQuestionClicked: () -> Unit,
+               onSubmitClicked: () -> Unit) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var prefName by remember { mutableStateOf("") }
@@ -77,7 +78,7 @@ fun MainScreen(modifier: Modifier=Modifier) {
 
         Button(
             onClick = {
-                Log.d("IcebreakerFall2025", "Pressed")
+                onGetQuestionClicked()
             },
             modifier = Modifier.padding(top=20.dp),
             colors = ButtonDefaults.buttonColors(
@@ -105,7 +106,7 @@ fun MainScreen(modifier: Modifier=Modifier) {
         )
         Button(
             onClick = {
-                Log.d("IcebreakerFall2025", "Pressed")
+                onSubmitClicked()
             },
             modifier = Modifier.padding(top=20.dp),
             colors = ButtonDefaults.buttonColors(
@@ -125,7 +126,10 @@ fun MainScreen(modifier: Modifier=Modifier) {
 @Composable
 fun MainScreenPreview(){
     MaterialTheme{
-        MainScreen()
+        MainScreen(
+            onGetQuestionClicked = {},
+            onSubmitClicked = {}
+        )
     }
 }
 

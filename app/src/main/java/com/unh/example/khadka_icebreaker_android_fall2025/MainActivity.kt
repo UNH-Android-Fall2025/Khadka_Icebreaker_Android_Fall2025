@@ -1,6 +1,7 @@
 package com.unh.example.khadka_icebreaker_android_fall2025
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,9 +21,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             Khadka_Icebreaker_Android_Fall2025Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+                    MainScreen(
+                        modifier = Modifier.padding(innerPadding),
+                        onGetQuestionClicked = {getQuestionsFromFirebase()},
+                        onSubmitClicked = {setResponseToFirebase()}
+                        )
                 }
             }
         }
+    }
+    private fun getQuestionsFromFirebase(){
+        Log.d("IcebreakerF2025", "Get from Firebase db")
+    }
+    private fun setResponseToFirebase(){
+        Log.d("IcebreakerF2025", "Save to Firebase db")
     }
 }
