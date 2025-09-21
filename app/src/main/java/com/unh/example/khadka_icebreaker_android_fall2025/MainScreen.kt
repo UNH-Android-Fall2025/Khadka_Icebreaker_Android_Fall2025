@@ -86,7 +86,7 @@ fun MainScreen(modifier: Modifier=Modifier) {
             )
         ){
             Text(
-                text = "Get a New Random Question",
+                text = stringResource(R.string.question_button_text),
                 fontSize = 18.sp
             )
         }
@@ -114,7 +114,7 @@ fun MainScreen(modifier: Modifier=Modifier) {
             )
         ){
             Text(
-                text = "Submit",
+                text = stringResource(R.string.submit_button_text),
                 fontSize = 18.sp
             )
         }

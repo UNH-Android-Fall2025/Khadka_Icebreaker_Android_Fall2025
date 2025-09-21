@@ -6,4 +6,6 @@
     <string name="last_name_text">Last Name</string>
     <string name="pref_name_text">Pref Name</string>
     <string name="answer_text">Answer</string>
+    <string name="question_button_text">Get a New Random Question</string>
+    <string name="submit_button_text">Submit</string>
 </resources>
