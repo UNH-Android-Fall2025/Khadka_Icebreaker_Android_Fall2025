@@ -20,28 +20,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             Khadka_Icebreaker_Android_Fall2025Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Ashish!",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    MainScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Khadka_Icebreaker_Android_Fall2025Theme {
-        Greeting("Android")
     }
 }

@@ -24,7 +24,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun MainScreen() {
+fun MainScreen(modifier: Modifier=Modifier) {
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
+    var prefName by remember { mutableStateOf("") }
+    var question by remember { mutableStateOf("") }
+    var answer by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,10 +47,6 @@ fun MainScreen() {
             fontSize = 28.sp,
             fontWeight = FontWeight.Normal
         )
-
-        var firstName by remember { mutableStateOf("") }
-        var lastName by remember { mutableStateOf("") }
-        var prefName by remember { mutableStateOf("") }
 
         OutlinedTextField(
             enabled = true,
@@ -85,6 +87,34 @@ fun MainScreen() {
         ){
             Text(
                 text = "Get a New Random Question",
+                fontSize = 18.sp
+            )
+        }
+        Text(
+            text = question,
+            fontSize = 18.sp,
+            modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)
+        )
+        OutlinedTextField(
+            enabled = true,
+            singleLine = true,
+            modifier = Modifier.padding(top = 10.dp),
+            value = answer,
+            onValueChange = {answer=it},
+            label = {Text(stringResource(R.string.answer_text))}
+        )
+        Button(
+            onClick = {
+                Log.d("IcebreakerFall2025", "Pressed")
+            },
+            modifier = Modifier.padding(top=20.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Transparent,
+                contentColor = Color.Blue
+            )
+        ){
+            Text(
+                text = "Submit",
                 fontSize = 18.sp
             )
         }
