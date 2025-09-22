@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
             .addOnSuccessListener{result ->
                 questionBank = mutableListOf()
                 for (document in result){
-                    val question = document.toObject(Question::class.java)
+                    val question = document.toObject(Questions::class.java)
                     questionBank!!.add(question)
                     Log.d("IcebreakerF2025", "$question")
                 }
