@@ -51,7 +51,7 @@ fun Khadka_Icebreaker_Android_Fall2025Theme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = LightColorScheme,
         typography = Typography,
         content = content
     )
