@@ -8,6 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -16,6 +19,7 @@ import com.unh.example.khadka_icebreaker_android_fall2025.ui.theme.Khadka_Icebre
 class MainActivity : ComponentActivity() {
     private val db = Firebase.firestore
     private var questionBank: MutableList<Questions>? = arrayListOf()
+    private var currentQuestion by mutableStateOf("")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -25,11 +29,21 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MainScreen(
                         modifier = Modifier.padding(innerPadding),
-                        onGetQuestionClicked = {getQuestionsFromFirebase()},
+                        queryDbOnStart = {getQuestionsFromFirebase()},
+                        onGetQuestionClicked = {getQuestion()},
                         onSubmitClicked = {setResponseToFirebase()}
                         )
                 }
             }
+        }
+    }
+
+    private fun getQuestion():String{
+        Log.d("IcebreakerF2025", "Getting a random question...")
+        return if (questionBank?.isNotEmpty() == true){
+            questionBank!!.random().text
+        }else{
+            "No questions available."
         }
     }
     private fun getQuestionsFromFirebase(){
