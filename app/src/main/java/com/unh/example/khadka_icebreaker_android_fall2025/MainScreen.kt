@@ -28,7 +28,12 @@ import androidx.compose.ui.unit.sp
 fun MainScreen(modifier: Modifier=Modifier,
                queryDbOnStart: () -> Unit,
                onGetQuestionClicked: () -> String = {"Placeholder"},
-               onSubmitClicked: () -> Unit) {
+               onSubmitClicked: (
+                   firstName:String,
+                   lastName:String,
+                   prefName:String,
+                   question:String,
+                   answer:String) -> Unit) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var prefName by remember { mutableStateOf("") }
@@ -113,11 +118,12 @@ fun MainScreen(modifier: Modifier=Modifier,
         )
         Button(
             onClick = {
-                onSubmitClicked()
+                onSubmitClicked(firstName, lastName, prefName, question, answer)
                 firstName = ""
                 lastName = ""
                 prefName = ""
                 answer = ""
+                question = ""
                 focusManager.clearFocus()
             },
             modifier = Modifier.padding(top=20.dp),
@@ -141,7 +147,7 @@ fun MainScreenPreview(){
         MainScreen(
             queryDbOnStart = {},
             onGetQuestionClicked = {"New Prev Question"},
-            onSubmitClicked = {},
+            onSubmitClicked = {_,_,_,_,_ ->},
         )
     }
 }
