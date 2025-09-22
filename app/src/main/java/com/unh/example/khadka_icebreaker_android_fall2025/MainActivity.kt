@@ -84,6 +84,15 @@ class MainActivity : ComponentActivity() {
             "question" to question
         )
 
-        Log.d("IcebreakerF2025", "Student: $student")
+        db.collection("Students")
+            .add(student)
+            .addOnSuccessListener { documentReference ->
+                Log.d("IcebreakerF2025", "Saved to Firestore with ID: ${documentReference.id}")
+                onSuccess()
+            }
+            .addOnFailureListener { error ->
+                Log.w("IcebreakerF2025", "Error saving", error)
+                onFailure(error)
+            }
     }
 }
